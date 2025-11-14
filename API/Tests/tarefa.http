@@ -1,8 +1,8 @@
 ### Listar todas as tarefas
-GET http://localhost:5000/api/tarefas/listar
+GET http://localhost:5273/api/tarefas/listar
 
 ### Cadastrar uma nova tarefa
-POST http://localhost:5000/api/tarefas/cadastrar
+POST http://localhost:5273/api/tarefas/cadastrar
 Content-Type: application/json
 
 {
@@ -10,12 +10,12 @@ Content-Type: application/json
 }
 
 ### api/tarefa/alterar - Alterar uma tarefa
-PUT http://localhost:5000/api/tarefas/alterar/2f1b7dc1-3b9a-4e1a-a389-7f5d2f1c8f3e
+PUT http://localhost:5273/api/tarefas/alterar/6a8b3e4d-5e4e-4f7e-bdc9-9181e456ad0e
 
 ###  Listar tarefas não concluídas
-GET http://localhost:5000/api/tarefas/naoconcluidas
+GET http://localhost:5273/api/tarefas/naoconcluidas
 
 ### 🟢 Listar tarefas concluídas
-GET http://localhost:5000/api/tarefas/concluidas
+GET http://localhost:5273/api/tarefas/concluidas
 
 ###

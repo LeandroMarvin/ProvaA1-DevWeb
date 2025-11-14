@@ -5,6 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDataContext>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AcessoTotal", policy =>
+        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+});
 
 var app = builder.Build();
 
@@ -39,7 +44,7 @@ app.MapPut("/api/tarefas/alterar/{id}", ([FromServices] AppDataContext ctx, [Fro
             tarefaEncontrada.Status = "Em andamento";
         else if (tarefaEncontrada.Status == "Em andamento")
             tarefaEncontrada.Status = "Concluída";
-            
+
     ctx.Tarefas.Update(tarefaEncontrada);
     ctx.SaveChanges();
     return Results.Ok(ctx.Tarefas.ToList());
@@ -77,5 +82,6 @@ app.MapGet("/api/tarefas/concluidas", ([FromServices] AppDataContext ctx) =>
         return Results.Problem(erro.Message);
     }
 });
-
+app.Urls.Add("http://localhost:5273");
+app.UseCors("AcessoTotal");
 app.Run();
